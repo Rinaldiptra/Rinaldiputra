@@ -1,26 +1,50 @@
-import React from 'react';
+
+import React, { Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
+import Teacher from './component/teacher/Teacher';
+import Student from './component/student/Student'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/student">Student</Link><br></br>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <Link to="/teacher">Teacher</Link><br></br>
+              </li>
+            </ul>
+          </nav>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+            {/* perpindahan */}
+          <Switch> 
+            <Route path="/student">
+              <Student />
+            </Route>
+            <Route path="/teacher">
+              <Teacher />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
-
 export default App;
+
+
+
